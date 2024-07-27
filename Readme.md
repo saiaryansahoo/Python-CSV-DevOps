@@ -118,5 +118,5 @@ This project demonstrates how to build, test, and deploy a Python application us
 ## 📞 Contact Me 📞
 If you have any questions or need further assistance, feel free to contact me:
 
-- **Email**: [your-email@example.com](mailto:saiaryan.sahoo@gmail.com)
+- **Email**: [saiaryan.sahoo@gmail.com](mailto:saiaryan.sahoo@gmail.com)
 - **GitHub**: [saiaryansahoo](https://github.com/saiaryansahoo)
