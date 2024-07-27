@@ -5,22 +5,45 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: task-python-app
+    image: task-python:latest
     environment:
       - PYTHONPATH=/app
     command: python app/main.py
     volumes:
       - .:/app
-    depends_on:
-      - test
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
 
   test:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: task-python-test
+    image: task-python:latest
     environment:
       - PYTHONPATH=/app
     command: python tests/test_main.py
     volumes:
       - .:/app
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: overlay
+    attachable: true
