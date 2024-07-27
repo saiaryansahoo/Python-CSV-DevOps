@@ -102,7 +102,7 @@ This project is a Python-based application that processes data from a CSV file, 
     ```
 
 ### CI/CD Pipeline
-- The CI/CD pipeline is configured in `.github/workflows/main.yml`.
+- The CI/CD pipeline is configured in `.github/workflows/ci-cd.yml`.
 - It includes steps for setting up Python, installing dependencies, and running tests.
 - The pipeline is triggered on every push and pull request.
 
