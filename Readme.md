@@ -1,115 +1,122 @@
-  Python Data Processing Application
+<div align="center">
 
-Python Data Processing Application
-==================================
+# 📊 Python Data Processing Application 📊
 
 This project is a Python-based application that processes data from a CSV file, performs computations, and prints results. The project includes unit tests to verify the application's functionality. It uses Docker, Docker Compose, Docker Swarm, Kubernetes, and GitHub Actions for CI/CD.
 
-Tech Stack
-----------
+</div>
 
-*   Python
-*   Docker
-*   Docker Compose
-*   Docker Swarm
-*   Kubernetes
-*   GitHub Actions
+## 🌟 Features 🌟
 
-Project Structure
------------------
+### Data Processing
+- 📈 Reads data from a CSV file.
+- 📊 Computes monthly revenue, product revenue, and customer revenue.
+- 🏆 Identifies top customers.
 
-        .
-        ├── app
-        │   ├── \_\_init\_\_.py
-        │   ├── main.py
-        │   ├── utils.py
-        ├── tests
-        │   ├── \_\_init\_\_.py
-        │   ├── test\_main.py
-        ├── data
-        │   ├── orders.csv
-        ├── Dockerfile
-        ├── docker-compose.yml
-        ├── requirements.txt
-        ├── README.md
-    
+### Docker and Docker Compose
+- 🐳 Multi-stage Docker build with an Ubuntu base image.
+- 🛡️ Usage of distroless images for minimal attack surface.
+- ⚙️ Docker Compose setup for multi-container environments.
 
-Prerequisites
--------------
+### Docker Swarm
+- 🐝 Deployment using Docker Swarm for scaling and orchestration.
 
-*   Docker: [Install Docker](https://docs.docker.com/get-docker/)
-*   Docker Compose: [Install Docker Compose](https://docs.docker.com/compose/install/)
-*   GitHub account with a repository
+### CI/CD with GitHub Actions
+- 🤖 Automated testing pipeline triggered on each push and pull request.
+- 🔍 Linting and unit tests executed in the pipeline.
+- 📋 Results are displayed in the GitHub Actions interface.
 
-Installation
-------------
+## 💻 Tech Stack 💻
+- **Programming Language**: Python 🐍
+- **Libraries**: pandas 🐼
+- **Containerization**: Docker, Docker Compose 🐳
+- **Orchestration**: Docker Swarm (implemented) 🐝, Kubernetes (planned) ☸️
+- **CI/CD**: GitHub Actions 🤖
 
-1.  **Clone the repository**:
+## 📁 Project Structure 📁
 
-            `git clone https://github.com/saiaryansahoo/DevOps-End-To-End-Basics-Project.git                 cd DevOps-End-To-End-Basics-Project`
-            
-        
+    .
+    ├── app
+    │   ├── __init__.py
+    │   ├── main.py
+    │   ├── utils.py
+    ├── tests
+    │   ├── __init__.py
+    │   ├── test_main.py
+    ├── data
+    │   ├── orders.csv
+    ├── Dockerfile
+    ├── docker-compose.yml
+    ├── requirements.txt
+    ├── README.md
 
-3.  **Build and run the Docker containers**:
+## 🛠️ Prerequisites 🛠️
 
-            `docker-compose up --build`
-        
+* Docker: [Install Docker](https://docs.docker.com/get-docker/)
+* Docker Compose: [Install Docker Compose](https://docs.docker.com/compose/install/)
+* GitHub account with a repository
 
-Running the Application
------------------------
+## 📜 Instructions 📜
 
-To run the application, use the following command:
+### Running the Application
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/saiaryansahoo/tanX.fi-Task-DevOps.git
+    cd tanX.fi-Task-DevOps
+    ```
+2. Build and run the Docker container:
+    ```sh
+    docker-compose up --build
+    ```
 
-        `docker-compose up app`
-    
+### Running the Tests
+1. Ensure Docker is running.
+2. Use Docker Compose to run the tests:
+    ```sh
+    docker-compose run test
+    ```
 
-Running the Tests
------------------
+### Getting the Output
+1. The application and tests will output their results to the terminal.
+2. For application output, you can check the logs:
+    ```sh
+    docker-compose logs app
+    ```
+3. For test output, you can check the logs:
+    ```sh
+    docker-compose logs test
+    ```
 
-To run the tests, use the following command:
+### Using Docker Swarm
+1. Initialize Docker Swarm:
+    ```sh
+    docker swarm init
+    ```
+2. Deploy the stack to Docker Swarm:
+    ```sh
+    docker stack deploy -c docker-compose.yml task-stack
+    ```
+3. To check the status of the services:
+    ```sh
+    docker stack services task-stack
+    ```
 
-        `docker-compose run test`
-    
+### CI/CD Pipeline
+- The CI/CD pipeline is configured in `.github/workflows/main.yml`.
+- It includes steps for setting up Python, installing dependencies, and running tests.
+- The pipeline is triggered on every push and pull request.
 
-Docker and Docker Compose
--------------------------
-
-The project uses a multi-stage Docker build and Docker Compose for orchestration. Below are the details:
-
-### Dockerfile
-
-        `# Use an official Python runtime as a parent image FROM python:3.8-slim  # Set the working directory in the container WORKDIR /app  # Copy the current directory contents into the container at /app COPY . /app  # Install any needed packages specified in requirements.txt RUN pip install --no-cache-dir -r requirements.txt  # Set the PYTHONPATH environment variable ENV PYTHONPATH=/app  # Run the application CMD ["python", "app/main.py"]`
-        
-    
-
-### docker-compose.yml
-
-        `version: '3.8'  services:   app:     build:       context: .     environment:       - PYTHONPATH=/app     command: python app/main.py     volumes:       - .:/app    test:     build:       context: .     environment:       - PYTHONPATH=/app     command: python tests/test_main.py     volumes:       - .:/app`
-        
-    
-
-CI/CD with GitHub Actions
--------------------------
-
-This project uses GitHub Actions for Continuous Integration and Continuous Deployment (CI/CD).
-
-### GitHub Actions Workflow
-
-Create a file `.github/workflows/main.yml` with the following content:
-
-        `name: CI/CD Pipeline  on:   push:     branches:       - main   pull_request:     branches:       - main  jobs:   build:     runs-on: ubuntu-latest      steps:     - name: Checkout code       uses: actions/checkout@v2      - name: Set up Python       uses: actions/setup-python@v2       with:         python-version: 3.8      - name: Install dependencies       run: |         python -m pip install --upgrade pip         pip install -r requirements.txt      - name: Run tests       run: python tests/test_main.py      - name: Log in to Docker Hub       uses: docker/login-action@v2       with:         username: ${{ secrets.DOCKER_USERNAME }}         password: ${{ secrets.DOCKER_PASSWORD }}      - name: Build and push Docker image       run: |         docker build -t task-python:latest .         docker tag task-python:latest ${{ secrets.DOCKER_USERNAME }}/task-python:latest         docker push ${{ secrets.DOCKER_USERNAME }}/task-python:latest      - name: Deploy with Docker Compose       run: docker-compose up -d`
-        
-    
-
-Secrets Configuration
----------------------
-
+### Secrets Configuration
 In your GitHub repository, add the following secrets:
 
-*   `DOCKER_USERNAME`: Your Docker Hub username
-*   `DOCKER_PASSWORD`: Your Docker Hub password
+- `DOCKER_USERNAME`: Your Docker Hub username
+- `DOCKER_PASSWORD`: Your Docker Hub password
 
-Conclusion
-----------
-
+## 🎯 Conclusion 🎯
 This project demonstrates how to build, test, and deploy a Python application using Docker, Docker Compose, Docker Swarm, Kubernetes, and GitHub Actions for CI/CD. Follow the instructions above to set up and run the application locally and in a CI/CD pipeline.
+
+## 📞 Contact Me 📞
+If you have any questions or need further assistance, feel free to contact me:
+
+- **Email**: [your-email@example.com](mailto:saiaryan.sahoo@gmail.com)
+- **GitHub**: [saiaryansahoo](https://github.com/saiaryansahoo)
