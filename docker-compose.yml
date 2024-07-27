@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-python-app
+    environment:
+      - PYTHONPATH=/app
+    command: python app/main.py
+    volumes:
+      - .:/app
+    depends_on:
+      - test
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-python-test
+    environment:
+      - PYTHONPATH=/app
+    command: python tests/test_main.py
+    volumes:
+      - .:/app
