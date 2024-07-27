@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-python
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: task-python
+  template:
+    metadata:
+      labels:
+        app: task-python
+    spec:
+      containers:
+      - name: task-python
+        image: ${{ secrets.DOCKER_PASSWORD }}/task-python:latest
+        ports:
+        - containerPort: 80

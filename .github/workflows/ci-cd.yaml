@@ -48,3 +48,5 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/task-python-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/task-python-app:latest
+
+##need to configure AWS EKS(Kubenetes) for CD Using ArgoCD
