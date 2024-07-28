@@ -14,9 +14,11 @@ This project is a Python-based application that processes data from a CSV file, 
 - 🏆 Identifies top customers.
 
 ### Docker and Docker Compose
-- 🐳 Multi-stage Docker build with an Ubuntu base image.
-- 🛡️ Usage of distroless images for minimal attack surface.
-- ⚙️ Docker Compose setup for multi-container environments.
+
+- 🐳 Built Docker images using Python 3.8-slim for a lightweight environment.
+- 🛡️ Enhanced security with minimal base images, reducing the attack surface.
+- ⚙️ Configured Docker Compose for seamless multi-container application deployment and pushed images to Docker Hub.
+
 
 ### Docker Swarm
 - 🐝 Deployment using Docker Swarm for scaling and orchestration.
@@ -34,21 +36,33 @@ This project is a Python-based application that processes data from a CSV file, 
 - **CI/CD**: GitHub Actions 🤖
 
 ## 📁 Project Structure 📁
+```plaintext
+.
+├── .github
+│   └── workflows
+│       └── ci-cd.yaml
+├── app
+│   ├── __pycache__
+│   ├── __init__.py
+│   ├── main.py
+│   └── utils.py
+├── data
+│   └── orders.csv
+├── deploy
+│   └── argocd-application.yaml
+├── k8s
+│   └── deployment.yaml
+├── tests
+│   ├── __pycache__
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── test_utils.py
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── README.md
 
-    .
-    ├── app
-    │   ├── __init__.py
-    │   ├── main.py
-    │   ├── utils.py
-    ├── tests
-    │   ├── __init__.py
-    │   ├── test_main.py
-    ├── data
-    │   ├── orders.csv
-    ├── Dockerfile
-    ├── docker-compose.yml
-    ├── requirements.txt
-    ├── README.md
+```
 
 ## 🛠️ Prerequisites 🛠️
 
