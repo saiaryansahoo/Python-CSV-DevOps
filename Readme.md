@@ -2,7 +2,7 @@
 
 # 📊 Python Data Processing Application 📊
 
-This project is a Python-based application that processes data from a CSV file, performs computations, and prints results. The project includes unit tests to verify the application's functionality. It uses Docker, Docker Compose, Docker Swarm, Kubernetes, and GitHub Actions for CI/CD.
+This project is a Python-based application that processes data from a CSV file, performs computations, and prints results. The project includes unit tests to verify the application's functionality. It uses Docker, Docker Compose, Docker Swarm, and GitHub Actions for CI/CD.
 
 </div>
 
