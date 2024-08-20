@@ -134,4 +134,4 @@ If you have any questions or need further assistance, feel free to contact me:
 
 - **Email**: [saiaryan.sahoo@gmail.com](mailto:saiaryan.sahoo@gmail.com)
 - **GitHub**: [saiaryansahoo](https://github.com/saiaryansahoo)
-- **LinkedIn**: [saiaryansahoo](https://linkedin.in/saiaryansahoo)
+- **LinkedIn**: [saiaryansahoo](https://www.linkedin.com/in/sai-aryan-sahoo-a890831aa/)
